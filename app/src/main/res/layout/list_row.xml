@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:text="Item Name"
+        android:textColor="@color/colorAccent"
+        android:layout_marginLeft="4dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/name"
+        android:text="Date text"
+        android:layout_marginTop="6dp"
+        android:textStyle="italic"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/Thumbnail"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/dateText"
+        android:src="@drawable/knife_and_fork"
+        android:layout_width="90dp"
+        android:layout_height="90dp" />
+
+    <TextView
+        android:id="@+id/calories"
+        android:text="100"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/Thumbnail"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/callText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calories"
+        android:layout_toRightOf="@+id/calories"
+        android:text="@string/cal_text"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/hasChild"
+        android:text="->"
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentRight="true"
+        android:textSize="35sp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

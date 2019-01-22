@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Application Developemnt reza</string>
+
+    <string name="title_text">Calorie Counter</string>
+    <string name="hint_food">What did you eat ?</string>
+    <string name="hint_calories">Calorie Count</string>
+    <string name="submit_text">Submit Item</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="food_total_text">Total Calories:</string>
+    <string name="cal_text">Cal.</string>
+    <string name="food_items_num">Food Items:</string>
+</resources>
