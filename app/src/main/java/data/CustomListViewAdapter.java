@@ -100,7 +100,9 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
                 i.putExtras(mBundle);
 
                 activity.startActivity(i);
+
             }
+
         });
         return row;
     }

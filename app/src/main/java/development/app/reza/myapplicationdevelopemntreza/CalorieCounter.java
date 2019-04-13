@@ -32,6 +32,7 @@ public class CalorieCounter extends AppCompatActivity {
             public void onClick(View v) {
 
                 saveToDB();
+                finish();
             }
         });
         //button click will open the custom list view

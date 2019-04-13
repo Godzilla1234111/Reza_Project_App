@@ -45,9 +45,6 @@ public class FooditemInfo extends AppCompatActivity {
         Toast.makeText(this, "Food Item Deleted", Toast.LENGTH_SHORT).show();
         // brings hte user back th the calorie counter view
         startActivity(new Intent(FooditemInfo.this, CalorieCounter.class));
-
-        //Remove the activity from stack
         FooditemInfo.this.finish();
     }
-
 }
