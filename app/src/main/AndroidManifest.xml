@@ -34,8 +34,6 @@
         <activity android:name=".StepCounter" />
         <activity android:name=".WaterCounter" />
         <activity android:name=".CalorieCounter" />
-        <activity android:name="data.ListDataActivity"/>
-        <activity android:name="data.EditDataActivity"/>
         <activity android:name=".DisplayFoodsActiviy" />
         <activity android:name=".FooditemInfo"></activity>
     </application>

@@ -16,7 +16,7 @@ public class WaterCounter extends AppCompatActivity {
     private static final String TAG = "WaterCounter";
     //defining variables
     DatabaceHandler2 dbHandler;
-    private Button btnAdd, btnViewData;
+    private Button btnAdd;
     private EditText editText;
     private TextView totalWater;
 
@@ -27,7 +27,6 @@ public class WaterCounter extends AppCompatActivity {
         //setting the correct text edit, text view and button ot the correct id
         editText = (EditText) findViewById(R.id.WaterInput);
         btnAdd = (Button) findViewById(R.id.AddWater);
-        btnViewData = (Button) findViewById(R.id.ViewWater1);
         totalWater = (TextView) findViewById(R.id.WaterTotal);
         //linking the correct database handler for water counter
         dbHandler = new DatabaceHandler2(this);
@@ -47,16 +46,6 @@ public class WaterCounter extends AppCompatActivity {
                 }
             }
         });
-        //view data button
-        btnViewData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //intent will bing you the water view with water list inputted
-                Intent intent = new Intent(WaterCounter.this, data.ListDataActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
     //updates the total water count
     private void refreshWater() {
@@ -89,6 +78,3 @@ public class WaterCounter extends AppCompatActivity {
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 }
-
-
-

@@ -26,7 +26,6 @@ public class DatabaceHandler2 extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL2 + " TEXT)";
         db.execSQL(createTable);
-
     }
 
     @Override
@@ -55,43 +54,6 @@ public class DatabaceHandler2 extends SQLiteOpenHelper {
         }
     }
 
-    //return all data from database
-    public Cursor getWater() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME;
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getWaterid(String name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL1 + " FROM " + TABLE_NAME +
-                " WHERE " + COL2 + " = '" + name + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-
-    public void updateWater(String newName, int id, String oldName) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL2 +
-                " = '" + newName + "' WHERE " + COL1 + " = '" + id + "'" +
-                " AND " + COL2 + " = '" + oldName + "'";
-        Log.d(TAG, "updateName: query: " + query);//for debugging
-        Log.d(TAG, "updateName: Setting name to " + newName);
-        db.execSQL(query);
-    }
-
-    public void deleteWater(int id, String name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + TABLE_NAME + " WHERE "
-                + COL1 + " = '" + id + "'" +
-                " AND " + COL2 + " = '" + name + "'";
-        Log.d(TAG, "deleteName: query: " + query);
-        Log.d(TAG, "deleteName: Deleting " + name + " from database.");
-        db.execSQL(query);
-    }
-
     public int totalWater() {
         int water = 0;
         SQLiteDatabase dba = this.getReadableDatabase();
@@ -108,6 +70,3 @@ public class DatabaceHandler2 extends SQLiteOpenHelper {
         return water;
     }
 }
-
-
-
