@@ -69,7 +69,7 @@
         android:inputType="textPersonName"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:textSize="14sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <Button
@@ -79,12 +79,27 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="171dp"
-        android:layout_marginLeft="171dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
         android:layout_marginRight="171dp"
-        android:layout_marginBottom="268dp"
+        android:layout_marginBottom="249dp"
         android:layout_weight="1"
         android:text="Add Water"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/reset_water"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="233dp"
+        android:layout_marginLeft="233dp"
+        android:layout_marginRight="171dp"
+        android:layout_marginBottom="249dp"
+        android:layout_weight="1"
+        android:text="Reset Water "
         android:textColor="@color/colorAccent" />
 
 

@@ -74,9 +74,11 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
 
             row.setTag(holder);
 
+
         }else{
 
             holder = (ViewHolder) row.getTag();
+
         }
         //accessing the current food object
         holder.food = getItem(position);
@@ -98,11 +100,8 @@ public class CustomListViewAdapter extends ArrayAdapter<Food> {
                 //by freezing all of its content
                 mBundle.putSerializable("userOBJ", finalHolder.food);
                 i.putExtras(mBundle);
-
                 activity.startActivity(i);
-
             }
-
         });
         return row;
     }

@@ -17,9 +17,9 @@ public class WaterCounter extends AppCompatActivity {
     //defining variables
     DatabaceHandler2 dbHandler;
     private Button btnAdd;
+    private Button btnDel;
     private EditText editText;
     private TextView totalWater;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class WaterCounter extends AppCompatActivity {
         //setting the correct text edit, text view and button ot the correct id
         editText = (EditText) findViewById(R.id.WaterInput);
         btnAdd = (Button) findViewById(R.id.AddWater);
+        btnDel = (Button) findViewById(R.id.reset_water);
         totalWater = (TextView) findViewById(R.id.WaterTotal);
         //linking the correct database handler for water counter
         dbHandler = new DatabaceHandler2(this);
@@ -45,8 +46,20 @@ public class WaterCounter extends AppCompatActivity {
                     toastMessage("put something in text field ");
                 }
             }
+
+        });
+
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dbHandler.DelData();
+                editText.setText("0");
+                deldata();
+            }
         });
     }
+
     //updates the total water count
     private void refreshWater() {
         //new database from getApplicationContext
@@ -57,7 +70,7 @@ public class WaterCounter extends AppCompatActivity {
         String formattedValue = Utils.formatNumber(WaterValue);
         //setting the water total amount on the text view
         //with formatted value of water total
-        totalWater.setText("Total water: "+ formattedValue+".ML");
+        totalWater.setText("Total water: "+formattedValue+"ML");
     }
     //adds data to the db
     public void AddData(String newEntry) {
@@ -70,9 +83,15 @@ public class WaterCounter extends AppCompatActivity {
             refreshWater();
         } else {
             //if no error message
-            toastMessage("Error");
+            toastMessage("error try again");
         }
     }
+    public void deldata()
+    {
+            toastMessage("Counter has been reset and new water to see changes");
+            refreshWater();
+    }
+
     //toast message method for onscreen messages on phone
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();

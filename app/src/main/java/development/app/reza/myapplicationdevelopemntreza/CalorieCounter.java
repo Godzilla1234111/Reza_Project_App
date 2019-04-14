@@ -30,7 +30,6 @@ public class CalorieCounter extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 saveToDB();
                 finish();
             }
@@ -40,6 +39,7 @@ public class CalorieCounter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openItemView();
+                finish();
             }
         });
     }
@@ -71,6 +71,5 @@ public class CalorieCounter extends AppCompatActivity {
             //TAKE USER TO NEXT SCREEN
             startActivity(new Intent(CalorieCounter.this, DisplayFoodsActiviy.class));
         }
-
     }
 

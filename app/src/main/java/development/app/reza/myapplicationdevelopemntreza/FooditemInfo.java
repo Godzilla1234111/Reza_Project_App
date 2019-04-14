@@ -46,5 +46,6 @@ public class FooditemInfo extends AppCompatActivity {
         // brings hte user back th the calorie counter view
         startActivity(new Intent(FooditemInfo.this, CalorieCounter.class));
         FooditemInfo.this.finish();
+        finish();
     }
 }
