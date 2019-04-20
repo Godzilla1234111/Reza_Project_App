@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import data.DatabaceHandler2;
+import me.itangqi.waveloadingview.WaveLoadingView;
 import util.Utils;
 
 public class WaterCounter extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class WaterCounter extends AppCompatActivity {
     private Button btnDel;
     private EditText editText;
     private TextView totalWater;
+    private WaveLoadingView prg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class WaterCounter extends AppCompatActivity {
         btnAdd = (Button) findViewById(R.id.AddWater);
         btnDel = (Button) findViewById(R.id.reset_water);
         totalWater = (TextView) findViewById(R.id.WaterTotal);
+        prg =(WaveLoadingView) findViewById(R.id.waveLoadingView);
         //linking the correct database handler for water counter
         dbHandler = new DatabaceHandler2(this);
 
@@ -40,25 +44,29 @@ public class WaterCounter extends AppCompatActivity {
                 //loop will determine if their is an empty field
                 if (editText.length() != 0) {
                     AddData(newEntry);
+                    prg.setProgressValue(50);
                     editText.setText("");
-                } else {
+                }
+                else {
                     //bring up message to fill in the field
                     toastMessage("put something in text field ");
                 }
             }
 
         });
-
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dbHandler.DelData();
                 editText.setText("0");
+                prg.setProgressValue(0);
                 deldata();
             }
         });
     }
+
+
 
     //updates the total water count
     private void refreshWater() {
