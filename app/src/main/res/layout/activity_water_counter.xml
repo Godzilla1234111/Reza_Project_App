@@ -37,11 +37,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="432dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginRight="81dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginTop="438dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginRight="78dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="water in ml"
@@ -73,7 +73,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/AddWater"
+        android:id="@+id/AddProgress"
         android:layout_width="374dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -82,7 +82,22 @@
         android:layout_marginStart="21dp"
         android:layout_marginLeft="21dp"
         android:layout_marginRight="171dp"
-        android:layout_marginBottom="131dp"
+        android:layout_marginBottom="67dp"
+        android:layout_weight="1"
+        android:text="Add Progress"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/addWater"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="171dp"
+        android:layout_marginBottom="124dp"
         android:layout_weight="1"
         android:text="Add Water"
         android:textColor="@color/colorAccent" />
@@ -94,28 +109,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
         android:layout_marginRight="171dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:text="Reset Water "
         android:textColor="@color/colorAccent" />
 
     <me.itangqi.waveloadingview.WaveLoadingView
-        android:id="@+id/waveLoadingView"
+        android:id="@+id/progressbarr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:wlv_borderColor="@android:color/holo_blue_bright"
+        app:wlv_borderColor="#00BCD4"
         app:wlv_borderWidth="3dp"
-        app:wlv_progressValue="40"
-        app:wlv_shapeType="circle"
+        app:wlv_progressValue="0"
         app:wlv_round_rectangle="true"
-        app:wlv_triangle_direction="north"
-        app:wlv_titleCenterStrokeWidth="3dp"
-        app:wlv_titleCenterColor="@android:color/white"
-        app:wlv_titleCenterSize="24sp"
+        app:wlv_shapeType="circle"
         app:wlv_waveAmplitude="70"
-        app:wlv_waveColor="@android:color/holo_blue_bright"/>
+        app:wlv_waveColor="#00BCD4" />
 
 </RelativeLayout>

@@ -1,12 +1,11 @@
 package development.app.reza.myapplicationdevelopemntreza;
 
-import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import data.DatabaceHandler2;
@@ -20,31 +19,32 @@ public class WaterCounter extends AppCompatActivity {
     DatabaceHandler2 dbHandler;
     private Button btnAdd;
     private Button btnDel;
+    private Button btnProgress;
     private EditText editText;
     private TextView totalWater;
     private WaveLoadingView prg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_counter);
         //setting the correct text edit, text view and button ot the correct id
         editText = (EditText) findViewById(R.id.WaterInput);
-        btnAdd = (Button) findViewById(R.id.AddWater);
+        btnAdd = (Button) findViewById(R.id.addWater);
         btnDel = (Button) findViewById(R.id.reset_water);
+        btnProgress = (Button) findViewById(R.id.AddProgress);
         totalWater = (TextView) findViewById(R.id.WaterTotal);
-        prg =(WaveLoadingView) findViewById(R.id.waveLoadingView);
+        prg = (WaveLoadingView) findViewById(R.id.progressbarr);
         //linking the correct database handler for water counter
         dbHandler = new DatabaceHandler2(this);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String newEntry = editText.getText().toString();
                 //loop will determine if their is an empty field
                 if (editText.length() != 0) {
                     AddData(newEntry);
-                    prg.setProgressValue(50);
                     editText.setText("");
                 }
                 else {
@@ -54,19 +54,24 @@ public class WaterCounter extends AppCompatActivity {
             }
 
         });
+
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dbHandler.DelData();
                 editText.setText("0");
                 prg.setProgressValue(0);
                 deldata();
             }
         });
+
+        btnProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+            }
+        });
     }
-
-
 
     //updates the total water count
     private void refreshWater() {
@@ -99,9 +104,14 @@ public class WaterCounter extends AppCompatActivity {
             toastMessage("Counter has been reset and new water to see changes");
             refreshWater();
     }
+    public void update()
+    {
+        prg.setProgressValue(30);
+    }
 
     //toast message method for onscreen messages on phone
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
+
 }
