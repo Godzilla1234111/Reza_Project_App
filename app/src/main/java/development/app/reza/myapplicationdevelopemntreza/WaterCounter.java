@@ -19,7 +19,6 @@ public class WaterCounter extends AppCompatActivity {
     DatabaceHandler2 dbHandler;
     private Button btnAdd;
     private Button btnDel;
-    private Button btnProgress;
     private EditText editText;
     private TextView totalWater;
     private WaveLoadingView prg;
@@ -32,7 +31,6 @@ public class WaterCounter extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.WaterInput);
         btnAdd = (Button) findViewById(R.id.addWater);
         btnDel = (Button) findViewById(R.id.reset_water);
-        btnProgress = (Button) findViewById(R.id.AddProgress);
         totalWater = (TextView) findViewById(R.id.WaterTotal);
         prg = (WaveLoadingView) findViewById(R.id.progressbarr);
         //linking the correct database handler for water counter
@@ -42,6 +40,7 @@ public class WaterCounter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newEntry = editText.getText().toString();
+                update();
                 //loop will determine if their is an empty field
                 if (editText.length() != 0) {
                     AddData(newEntry);
@@ -64,15 +63,7 @@ public class WaterCounter extends AppCompatActivity {
                 deldata();
             }
         });
-
-        btnProgress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                update();
-            }
-        });
     }
-
     //updates the total water count
     private void refreshWater() {
         //new database from getApplicationContext
