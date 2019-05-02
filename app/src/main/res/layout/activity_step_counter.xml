@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.468" />
 
     <Button
-        android:id="@+id/ResetSteps"
+        android:id="@+id/todaySteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -73,13 +73,40 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Reset Steps"
+        android:text="Steps today"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StepValue"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.105" />
+
+    <Button
+        android:id="@+id/setSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Save Steps"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StepValue"
+        app:layout_constraintVertical_bias="0.378" />
+
+    <Button
+        android:id="@+id/deletsteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delet Steps"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="601dp" />
 </android.support.constraint.ConstraintLayout>

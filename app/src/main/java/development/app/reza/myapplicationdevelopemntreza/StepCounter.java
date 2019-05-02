@@ -1,15 +1,12 @@
 package development.app.reza.myapplicationdevelopemntreza;
 
-
-import android.arch.lifecycle.Lifecycle;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
-import android.renderscript.Sampler;
+
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -30,6 +27,7 @@ import com.google.android.gms.fitness.request.OnDataPointListener;
 import com.google.android.gms.fitness.request.SensorRequest;
 import com.google.android.gms.fitness.result.DataSourcesResult;
 
+
 import java.util.concurrent.TimeUnit;
 
 public class StepCounter extends AppCompatActivity implements OnDataPointListener,
@@ -37,27 +35,26 @@ public class StepCounter extends AppCompatActivity implements OnDataPointListene
         GoogleApiClient.OnConnectionFailedListener {
 
     private static final int REQUEST_OAUTH = 1;
-    private TextView steps;
     private static final String AUTH_PENDING = "auth_state_pending";
     private boolean authInProgress = false;
     private GoogleApiClient mApiClient;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_step_counter);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_step_counter);
 
-            if (savedInstanceState != null) {
-                authInProgress = savedInstanceState.getBoolean(AUTH_PENDING);
-            }
-
-            mApiClient = new GoogleApiClient.Builder(this)
-                    .addApi(Fitness.SENSORS_API)
-                    .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ_WRITE))
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .build();
+        if (savedInstanceState != null) {
+            authInProgress = savedInstanceState.getBoolean(AUTH_PENDING);
         }
+
+        mApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Fitness.SENSORS_API)
+                .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ_WRITE))
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+    }
 
     @Override
     protected void onStart() {
@@ -65,101 +62,101 @@ public class StepCounter extends AppCompatActivity implements OnDataPointListene
         mApiClient.connect();
     }
 
-        @Override
-        public void onConnected(Bundle bundle) {
+    @Override
+    public void onConnected(Bundle bundle) {
 
-            DataSourcesRequest dataSourceRequest = new DataSourcesRequest.Builder()
-                    .setDataTypes( DataType.TYPE_STEP_COUNT_CUMULATIVE )
-                    .setDataSourceTypes( DataSource.TYPE_RAW )
-                    .build();
+        DataSourcesRequest dataSourceRequest = new DataSourcesRequest.Builder()
+                .setDataTypes(DataType.TYPE_STEP_COUNT_CUMULATIVE)
+                .setDataSourceTypes(DataSource.TYPE_RAW)
+                .build();
 
-            ResultCallback<DataSourcesResult> dataSourcesResultCallback = new ResultCallback<DataSourcesResult>() {
-                @Override
-                public void onResult(DataSourcesResult dataSourcesResult) {
-                    for( DataSource dataSource : dataSourcesResult.getDataSources() ) {
-                        if( DataType.TYPE_STEP_COUNT_CUMULATIVE.equals( dataSource.getDataType() ) ) {
-                            registerFitnessDataListener(dataSource, DataType.TYPE_STEP_COUNT_CUMULATIVE);
-                        }
+        ResultCallback<DataSourcesResult> dataSourcesResultCallback = new ResultCallback<DataSourcesResult>() {
+            @Override
+            public void onResult(DataSourcesResult dataSourcesResult) {
+                for (DataSource dataSource : dataSourcesResult.getDataSources()) {
+                    if (DataType.TYPE_STEP_COUNT_CUMULATIVE.equals(dataSource.getDataType())) {
+                        registerFitnessDataListener(dataSource, DataType.TYPE_STEP_COUNT_CUMULATIVE);
                     }
                 }
-            };
+            }
+        };
 
-            Fitness.SensorsApi.findDataSources(mApiClient, dataSourceRequest)
-                    .setResultCallback(dataSourcesResultCallback);
-        }
+        Fitness.SensorsApi.findDataSources(mApiClient, dataSourceRequest)
+                .setResultCallback(dataSourcesResultCallback);
+    }
 
     private void registerFitnessDataListener(DataSource dataSource, DataType dataType) {
 
         SensorRequest request = new SensorRequest.Builder()
-                .setDataSource( dataSource )
-                .setDataType( dataType )
-                .setSamplingRate( 3, TimeUnit.SECONDS )
+                .setDataSource(dataSource)
+                .setDataType(dataType)
+                .setSamplingRate(3, TimeUnit.SECONDS)
                 .build();
 
-        Fitness.SensorsApi.add( mApiClient, request, this )
+        Fitness.SensorsApi.add(mApiClient, request, this)
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
                         if (status.isSuccess()) {
-                            Log.e( "GoogleFit", "SensorApi successfully added" );
+                            Log.e("GoogleFit", "SensorApi successfully added");
                         }
                     }
                 });
     }
-        @Override
-        public void onConnectionSuspended(int i) {
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+        try {
+            authInProgress = true;
+            connectionResult.startResolutionForResult(StepCounter.this, REQUEST_OAUTH);
+        } catch (IntentSender.SendIntentException e) {
 
         }
+    }
 
-        @Override
-        public void onConnectionFailed(ConnectionResult connectionResult) {
+    @Override
+    public void onDataPoint(DataPoint dataPoint) {
 
-            try {
-                authInProgress = true;
-                connectionResult.startResolutionForResult(StepCounter.this, REQUEST_OAUTH);
-            } catch (IntentSender.SendIntentException e) {
+        for (final Field field : dataPoint.getDataType().getFields()) {
+            final Value value = dataPoint.getValue(field);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
 
-            }
+                    Toast.makeText(getApplicationContext(), "Field: " + field.getName() + " Value: " + value, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
+    }
 
-        @Override
-        public void onDataPoint(DataPoint dataPoint) {
-
-            for( final Field field : dataPoint.getDataType().getFields() ) {
-                final Value value = dataPoint.getValue( field );
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        steps.setText("10"+(getApplicationContext() + value.asActivity()));
-
-                        //Toast.makeText(getApplicationContext(), "Field: " + field.getName() + " Value: " + value, Toast.LENGTH_SHORT).show();
-
-                   }
-                });
-            }
-        }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if( requestCode == REQUEST_OAUTH ) {
+        if (requestCode == REQUEST_OAUTH) {
             authInProgress = false;
-            if( resultCode == RESULT_OK ) {
-                if( !mApiClient.isConnecting() && !mApiClient.isConnected() ) {
+            if (resultCode == RESULT_OK) {
+                if (!mApiClient.isConnecting() && !mApiClient.isConnected()) {
                     mApiClient.connect();
                 }
-            } else if( resultCode == RESULT_CANCELED ) {
-                Log.e( "GoogleFit", "RESULT_CANCELED" );
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.e("GoogleFit", "RESULT_CANCELED");
             }
         } else {
             Log.e("GoogleFit", "requestCode NOT request_oauth");
         }
     }
+
     @Override
     protected void onStop() {
         super.onStop();
 
-        Fitness.SensorsApi.remove( mApiClient, this )
+        Fitness.SensorsApi.remove(mApiClient, this)
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
@@ -175,7 +172,13 @@ public class StepCounter extends AppCompatActivity implements OnDataPointListene
         super.onSaveInstanceState(outState);
         outState.putBoolean(AUTH_PENDING, authInProgress);
     }
+
 }
+
+
+
+
+
 
 
 
