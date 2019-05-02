@@ -65,8 +65,8 @@
 
     <Button
         android:id="@+id/todaySteps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="194dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -85,8 +85,8 @@
 
     <Button
         android:id="@+id/setSteps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="191dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -98,9 +98,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StepValue"
-        app:layout_constraintVertical_bias="0.378" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <Button
         android:id="@+id/deletsteps"
@@ -108,5 +109,5 @@
         android:layout_height="wrap_content"
         android:text="Delet Steps"
         tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="601dp" />
+        tools:layout_editor_absoluteY="648dp" />
 </android.support.constraint.ConstraintLayout>
