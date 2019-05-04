@@ -9,4 +9,7 @@
     <string name="food_total_text">Total Calories:</string>
     <string name="cal_text">Cal.</string>
     <string name="food_items_num">Food Amount:</string>
+    <string name="appwidget_text">Calories</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
 </resources>
