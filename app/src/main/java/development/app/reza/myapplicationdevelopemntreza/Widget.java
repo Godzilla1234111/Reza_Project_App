@@ -7,19 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-
 public class Widget extends AppWidgetProvider {
-
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
-
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
-    }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -28,18 +16,18 @@ public class Widget extends AppWidgetProvider {
             Intent intent = new Intent(context, CalorieCounter.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
-            views.setOnClickPendingIntent(R.id.wigetbutton, pendingIntent);
+            views.setOnClickPendingIntent(R.id.Wbtn1, pendingIntent);
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
 
         }
-    }
-
-    @Override
-    public void onDeleted(Context context, int[] appWidgetIds) {
-        // When the user deletes the widget, delete the preference associated with it.
         for (int appWidgetId : appWidgetIds) {
+            Intent intent2 = new Intent(context, WaterCounter.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent2, 0);
+            RemoteViews views2 = new RemoteViews(context.getPackageName(), R.layout.widget);
+            views2.setOnClickPendingIntent(R.id.Wbtn2, pendingIntent);
 
+            appWidgetManager.updateAppWidget(appWidgetId, views2);
         }
     }
 

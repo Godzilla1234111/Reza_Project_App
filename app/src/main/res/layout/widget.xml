@@ -1,28 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#09C"
     android:padding="@dimen/widget_margin">
 
-    <TextView
-        android:id="@+id/appwidget_text"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/Wbtn1"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:background="#09C"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:layout_width="169dp"
+        android:layout_marginTop="40dp"
+        android:text="Calorie Counter" />
 
     <Button
-        android:id="@+id/wigetbutton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="calories"
-        android:textColorLink="#E91E63" />
-
+        android:id="@+id/Wbtn2"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:text="Water Counter" />
 </RelativeLayout>

@@ -30,7 +30,7 @@
 
     <EditText
         android:id="@+id/WaterInput"
-        android:layout_width="230dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -74,14 +74,14 @@
 
     <Button
         android:id="@+id/addWater"
-        android:layout_width="122dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="214dp"
-        android:layout_marginLeft="214dp"
-        android:layout_marginBottom="106dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginBottom="146dp"
         android:layout_weight="1"
         android:text="Add Water"
         android:textColor="@color/colorAccent" />
@@ -93,9 +93,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginBottom="107dp"
+        android:layout_marginStart="211dp"
+        android:layout_marginLeft="211dp"
+        android:layout_marginBottom="148dp"
         android:layout_weight="1"
         android:text="Reset Water "
         android:textColor="@color/colorAccent" />
