@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openStepCounter();
+
             }
         });
 
@@ -51,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
                 openWaterCounter();
             }
         });
+        //button that will open water counter//
+        button = (Button) findViewById(R.id.button4);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInjury();
+            }
+        });
     }
 
     //going back to previous screen //
@@ -69,8 +78,12 @@ public class MainActivity extends AppCompatActivity {
     public void openCalorieCounter() {
         Intent intent = new Intent(this, CalorieCounter.class);
         startActivity(intent);
-    }
 
+    }
+    private void openInjury() {
+        Intent intent = new Intent(this, injuryDetection.class);
+        startActivity(intent);
+    }
 }
 
 

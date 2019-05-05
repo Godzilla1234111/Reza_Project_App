@@ -9,7 +9,6 @@ import android.widget.EditText;
 import data.DatabaseHandler;
 import model.Food;
 
-
 public class CalorieCounter extends AppCompatActivity {
     //creating variables
     private EditText foodName, foodCals;

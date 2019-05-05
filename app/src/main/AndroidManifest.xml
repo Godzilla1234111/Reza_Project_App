@@ -46,6 +46,8 @@
         <activity android:name=".CalorieCounter" />
         <activity android:name=".DisplayFoodsActiviy" />
         <activity android:name=".FooditemInfo" />
+        <activity android:name=".injuryDetection" />
+        <activity android:name=".injureResult" />
     </application>
 
 </manifest>
