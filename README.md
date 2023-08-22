@@ -1,3 +1,2 @@
 # Reza_Project_App
-My app for my year 3 project 
-the priject i did for my final year uni project
+The app I developed for my bachlors degree thesis during my final year of university.  
